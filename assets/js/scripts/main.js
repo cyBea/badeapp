@@ -1,5 +1,6 @@
 $(document).ready(function() {
     initMap();
+    getLakes();
 });
 
 function initMap() {
@@ -9,3 +10,13 @@ function initMap() {
         maxZoom: 18
     }).addTo(map);  
 }
+
+function getLakes() {
+    var datenBerlinApi = "http://www.berlin.de/badegewaesser/baden-details/index.php/index/all.json?callback=";
+    $.getJSON(datenBerlinApi, {format: "json"})
+    .done(function(data) {
+        $.each( data.items, function( i, item ) {
+            $(document.createElement('p')).innerText(item).appendTo( "#lakes" );
+        });
+    });
+};
