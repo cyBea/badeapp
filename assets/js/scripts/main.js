@@ -1,5 +1,6 @@
 $(document).ready(function() {
     initMap();
+    getLakes();
 });
 
 function initMap() {
@@ -9,3 +10,13 @@ function initMap() {
         maxZoom: 18
     }).addTo(map);  
 }
+
+function getLakes() {
+    var lakeData = "data/lakes.js"
+    $.getJSON(lakeData, {})
+    .done(function(data) {
+        $.each( data.index, function( i, item ) {
+            $(document.createElement('p')).text(item.badname).appendTo( "#lakes" );
+        });
+    });
+};
