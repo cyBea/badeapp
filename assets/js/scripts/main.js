@@ -12,8 +12,8 @@ function initMap() {
 }
 
 function getLakes() {
-    var datenBerlinApi = "http://www.berlin.de/badegewaesser/baden-details/index.php/index/all.json?callback=";
-    $.getJSON(datenBerlinApi, {format: "json"})
+    var lakeData = "data/lakes.js"
+    $.getJSON(lakeData, {})
     .done(function(data) {
         $.each( data.items, function( i, item ) {
             $(document.createElement('p')).innerText(item).appendTo( "#lakes" );
