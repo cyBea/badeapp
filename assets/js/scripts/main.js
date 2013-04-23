@@ -15,8 +15,8 @@ function getLakes() {
     var lakeData = "data/lakes.js"
     $.getJSON(lakeData, {})
     .done(function(data) {
-        $.each( data.items, function( i, item ) {
-            $(document.createElement('p')).innerText(item).appendTo( "#lakes" );
+        $.each( data.index, function( i, item ) {
+            $(document.createElement('p')).text(item.badname).appendTo( "#lakes" );
         });
     });
 };
