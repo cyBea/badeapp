@@ -31,7 +31,7 @@ function getLakes() {
 function addLakeOverlays(map) {
     var lakeLayer = L.geoJson().addTo(map);
 
-    var lakeData = "data/lakes2.json";
+    var lakeData = "data/lakes_osm_min.json";
     $.getJSON( lakeData, {})
     .done(function(data) {
         $.each( data, function(i, item) {
