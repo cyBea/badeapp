@@ -44,7 +44,6 @@ function addLakeOverlays(map) {
                 },
                 "geometry" : item.geojson
             };
-
             L.geoJson(geojsonFeature).addTo(map);
             lakeLayer.addData(geojsonFeature);
         });
