@@ -28,7 +28,6 @@ body {
 
 #section {
 	
-float: left;
 display: block;
 }
 
@@ -44,7 +43,6 @@ display: block;
 	display: block;
 }
 #footer {
-	clear: both;
 	margin: 10px 0px 10px 0px;
 	display: block;
 
