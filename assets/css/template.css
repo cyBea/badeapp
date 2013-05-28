@@ -1,6 +1,6 @@
 body {
 
-	width: 960px;
+	width: 100%;
 	margin: 0px;
 	font-family: Verdana, Geneva, sans-serif;
 }
@@ -9,44 +9,39 @@ body {
 	background-color: #FFD174;
 	color: #A76F00;
 
-	padding: 4px 4px;
+	padding: 5px;
+	height: 25px;
+	line-height: 25px;
+	margin: 0px 0px 10px 0px;
 
 	<!--border: 1px solid BLACK;-->
 }
-#header {
-
-	
+#header {	
 	display: block;
-	margin: 0px 0px 10px 0px;
+	
 }
 
 #nav {
 
-	margin: 10px 0px 10px 0px;
 	display: block;
 }
 
 #section {
 display: block;
+height: auto;
 }
 
 #lakes {
 	margin: 10px 0px 10px 0px;
 }
 
-#aside {
-
-	min-height: 400px;
-	margin-left: 820px;
-
-	display: block;
-}
 #footer {
-	margin: 10px 0px 10px 0px;
+	margin: 0px !important;
 	display: block;
 
 }
 #wrapper {
+	margin: 0px 0px 10px 0px;
 	display: block;
 
 }
