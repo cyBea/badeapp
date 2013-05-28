@@ -13,12 +13,22 @@ function lakeLayer()
                     "properties": {
                         "name": "Coors Field",
                         "amenity": "Baseball Stadium",
-                        "popupContent": "This is where the Rockies play!"
+                        "popupContent": i + ". Eintrag",
+                        "color" : "#ff0000"
                     },
                     "geometry" : item.geojson
                 };
-                L.geoJson(geojsonFeature).addTo(map);
+
                 lakeLayer.addData(geojsonFeature);
+                var polygon = L.geoJson(geojsonFeature, {
+                    style: function (feature) {
+                        return {color: feature.properties.color};
+                    },
+                    onEachFeature: function (feature, layer) {
+                        //map.fitBounds(feature.getBounds());
+                        layer.bindPopup(feature.properties.popupContent);
+                    }});
+                polygon.addTo(map);
             });
         });
     }
