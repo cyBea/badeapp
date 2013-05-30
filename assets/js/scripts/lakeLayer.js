@@ -5,16 +5,15 @@ function lakeLayer()
     function addLakeOverlays(map) {
         var lakeLayer = L.geoJson().addTo(map);
 
-        var lakeData = "data/lakes_osm_min.json";
+        var lakeData = "data/lakes_with_markers.json";
         $.getJSON( lakeData, {}).done(function(data) {
             $.each( data, function(i, item) {
                 var geojsonFeature = {
                     "type": "Feature",
                     "properties": {
-                        "name": "Coors Field",
-                        "amenity": "Baseball Stadium",
-                        "popupContent": i + ". Eintrag",
-                        "color" : "#ff0000"
+                        "name": i,
+                        "popupContent": i,
+                        "color" : item.color
                     },
                     "geometry" : item.geojson
                 };
@@ -29,6 +28,10 @@ function lakeLayer()
                         layer.bindPopup(feature.properties.popupContent);
                     }});
                 polygon.addTo(map);
+
+                $.each(item.markers, function(n, marker) {
+                    L.marker([marker.coordinates[1],marker.coordinates[0]]).addTo(map);
+                });
             });
         });
     }
