@@ -16,6 +16,7 @@ function addLakeOverlays() {
                     name : i,
                     popupContent: i,
                     color : item.color,
+                    badestellen : item.markers
                 },
                 geometry : item.geojson
             };
@@ -50,8 +51,18 @@ function addLakeOverlays() {
     };
 
     info.update = function (props) {
-        this._div.innerHTML = '<h4>Badestelle</h4>' +  (props ?
-            '<b>' + props.name + '</b><br />' + 'hier die daten vom see einfügen' : 'Bewege die Maus über einen See');
+        var divContent = this._div.innerHTML;
+        this._div.innerHTML = '<h4>Badestelle</h4>';
+
+        if (typeof props != "undefined") {
+            var badestellen = '<h3>' + props.name + '</h3>';
+            $.each(props.badestellen, function(name, markerData) {
+                badestellen += '<h4>' + name + '</h4><p>Eco: ' + markerData.eco + '<br>Ente: ' + markerData.enter + '<br>Sicht: ' + markerData.sicht + '</p>'
+            });
+            this._div.innerHTML = badestellen;
+        } else {
+            this._div.innerHTML += 'Bewege die Maus über einen See';   
+        }
     };
 
     info.addTo(map);
@@ -74,17 +85,6 @@ function addLakeOverlays() {
     };
 
     legend.addTo(map);
-
-    info.onAdd = function (map) {
-        this._div = L.DomUtil.create('div', 'info'); 
-        this.update();
-        return this._div;
-    };
-
-    info.update = function (props) {
-        this._div.innerHTML = '<h4>Badestelle</h4>' +  (props ?
-            '<b>' + props.name + '</b><br />' + 'hier die daten vom see einfügen' : 'Bewege die Maus über einen See');
-    };
 
     function highlightFeature(e) {
         var layer = e.target;

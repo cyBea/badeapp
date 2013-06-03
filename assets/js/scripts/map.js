@@ -11,7 +11,7 @@ function initMap() {
         subdomains: ['http://otile2.mqcdn.com/tiles/1.0.0/map/{z}/{x}/{y}.jpg', 
             'http://otile3.mqcdn.com/tiles/1.0.0/map/{z}/{x}/{y}.jpg', 
             'http://otile4.mqcdn.com/tiles/1.0.0/map/{z}/{x}/{y}.jpg'],
-        attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>',
+        attribution: 'Tiles Courtesy of <a href="http://www.mapquest.com/" target="_blank">MapQuest</a> Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>',
         maxZoom: 18
     }).addTo(map);
 
