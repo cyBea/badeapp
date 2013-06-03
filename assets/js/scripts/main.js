@@ -12,9 +12,8 @@ function setMapDimensions() {
 }
 
 function init() {
-    var map = initMap();
-    lakeLayer = new lakeLayer();
-    lakeLayer.addLakeOverlays(map);
+    map = initMap();
+    addLakeOverlays();
 }
 
 // function getLakes() {
