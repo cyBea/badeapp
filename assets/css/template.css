@@ -14,7 +14,6 @@ body {
 	line-height: 25px;
 	margin: 0px 0px 10px 0px;
 
-	<!--border: 1px solid BLACK;-->
 }
 #header {	
 	display: block;
@@ -22,8 +21,35 @@ body {
 }
 
 #nav {
-
+	
 	display: block;
+}
+#dropdown {
+	width: 180px;
+	height: 180px;
+	margin: 0px 0px 0px 45px;
+	padding: 2px;
+	overflow: auto;
+	position: relative;
+	z-index:8;
+	background-color: #FFD174 !important;
+	color: #A76F00 !important;
+}
+ul#dropdown {
+	position: relative;
+}
+li#dropdown {
+	display: inline;
+	float: left;
+	position: relative;
+}
+ul#dropdown li:hover {
+	background-color: #FFD144;
+}
+
+ul#dropdown li:hover > ul {
+	visibility: visible;
+	opacity: 1;
 }
 
 #section {

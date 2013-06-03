@@ -4,7 +4,8 @@ function addLakeOverlays() {
     var lakeData = "data/lakes_with_markers.json";
     $.getJSON( lakeData, {}).done(function(data) {
         $.each( data, function(i, item) {
-             $.each(item.markers, function(n, markerData) {
+            $(document.createElement('li')).text(i).appendTo('#dropdown');
+            $.each(item.markers, function(n, markerData) {
                 var marker = L.marker([markerData.coordinates[1],markerData.coordinates[0]]);
                 marker.title = n;
                 marker.addTo(map);
