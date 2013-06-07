@@ -14,7 +14,6 @@ body {
 	line-height: 25px;
 	margin: 0px 0px 10px 0px;
 
-	<!--border: 1px solid BLACK;-->
 }
 #header {	
 	display: block;
@@ -22,8 +21,36 @@ body {
 }
 
 #nav {
-
+	position: relative;
 	display: block;
+	margin: 0px !important;
+}
+#dropdown {
+	width: 180px;
+	height: 180px;
+	margin: 0px 0px 0px 45px;
+	padding: 2px;
+	overflow: auto;
+	background-color: #FFD174 !important;
+	color: #A76F00 !important;
+	display: block;
+}
+ul#dropdown {
+	z-index:7;
+	position: absolute;
+}
+li#dropdown {
+	display: inline;
+	float: left;
+	position: relative;
+}
+ul#dropdown li:hover {
+	background-color: #FFD144;
+}
+
+ul#dropdown li:hover > ul {
+	visibility: visible;
+	opacity: 1;
 }
 
 #section {
@@ -41,7 +68,7 @@ height: auto;
 
 }
 #wrapper {
-	margin: 0px 0px 10px 0px;
+	margin: 10px 0px 10px 0px;
 	display: block;
 
 }
