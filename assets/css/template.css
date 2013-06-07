@@ -21,8 +21,9 @@ body {
 }
 
 #nav {
-	
+	position: relative;
 	display: block;
+	margin: 0px !important;
 }
 #dropdown {
 	width: 180px;
@@ -30,13 +31,13 @@ body {
 	margin: 0px 0px 0px 45px;
 	padding: 2px;
 	overflow: auto;
-	position: relative;
-	z-index:8;
 	background-color: #FFD174 !important;
 	color: #A76F00 !important;
+	display: block;
 }
 ul#dropdown {
-	position: relative;
+	z-index:7;
+	position: absolute;
 }
 li#dropdown {
 	display: inline;
@@ -67,7 +68,7 @@ height: auto;
 
 }
 #wrapper {
-	margin: 0px 0px 10px 0px;
+	margin: 10px 0px 10px 0px;
 	display: block;
 
 }

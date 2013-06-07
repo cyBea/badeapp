@@ -1,10 +1,11 @@
+var list;
 function addLakeOverlays() {
     var lakeLayer = L.geoJson().addTo(this.map);
 
     var lakeData = "data/lakes_with_markers.json";
     $.getJSON( lakeData, {}).done(function(data) {
         $.each( data, function(i, item) {
-            $(document.createElement('li')).text(i).appendTo('#dropdown');
+            
             $.each(item.markers, function(n, markerData) {
                 var marker = L.marker([markerData.coordinates[1],markerData.coordinates[0]]);
                 marker.title = n;
@@ -40,6 +41,12 @@ function addLakeOverlays() {
                     });
                 }});
             polygon.addTo(map);
+            // create list elements for dropdown
+            var element = $(document.createElement('li'));
+            element.text(i);
+            element.attr({id: item.place_id, value: i, swl: item.boundingbox[0], swla: item.boundingbox[2], nel: item.boundingbox[1], nela: item.boundingbox[3]});
+            element.appendTo('#dropdown');
+            // ENDE
         });
     });
 
@@ -106,7 +113,6 @@ function addLakeOverlays() {
         polygon.resetStyle(e.target);
         info.update();
     }
-
     function zoomToFeature(e) {
         map.fitBounds(e.target.getBounds());
     }
