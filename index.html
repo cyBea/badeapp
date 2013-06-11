@@ -23,15 +23,22 @@
     </head>
     
     <body>
-        <div id="header" class="color-scheme">Badeapp - Harter Shizzle</div>
-        <div id="nav" class="color-scheme"></div>
-        <ul id="dropdown"></ul>
-        <div id="wrapper">
-            <div id="section">
-                <div id="map"></div>
-            </div>
+        <div id="header">Badeapp - Harter Shizzle
+            <div id="opener">Choose your Lake</div>
         </div>
-        <div id="footer" class="color-scheme">FOOTER</div>
+        <div>
+            <div id="dialog">
+                <p>Wähle einen See</p>
+                <select id="see" name="see" size="1"> 
+                    <option value="-1">Bitte wählen</option>
+                </select>
+                <p>oder eine Badestelle</p>
+                <select id="badestelle" name="badestelle" size="1"> 
+                    <option value="-1">Bitte wählen</option>
+                </select> 
+            </div>
+            <div id="map"></div>
+        </div>
     </body>
     
 </html>

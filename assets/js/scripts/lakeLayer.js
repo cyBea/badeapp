@@ -1,15 +1,23 @@
-var list;
 function addLakeOverlays() {
     var lakeLayer = L.geoJson().addTo(this.map);
 
     var lakeData = "data/lakes_with_markers.json";
     $.getJSON( lakeData, {}).done(function(data) {
+        var seen = new Array();
         $.each( data, function(i, item) {
-            
+            $('#see').append($('<option>', {
+                value: i,
+                text: i
+            }));
+
             $.each(item.markers, function(n, markerData) {
                 var marker = L.marker([markerData.coordinates[1],markerData.coordinates[0]]);
                 marker.title = n;
                 marker.addTo(map);
+                $('#badestelle').append($('<option>', {
+                    value: n,
+                    text: n
+                }));
             });
 
             var geojsonFeature = {
@@ -41,12 +49,6 @@ function addLakeOverlays() {
                     });
                 }});
             polygon.addTo(map);
-            // create list elements for dropdown
-            var element = $(document.createElement('li'));
-            element.text(i);
-            element.attr({id: item.place_id, value: i, swl: item.boundingbox[0], swla: item.boundingbox[2], nel: item.boundingbox[1], nela: item.boundingbox[3]});
-            element.appendTo('#dropdown');
-            // ENDE
         });
     });
 
