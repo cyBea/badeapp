@@ -3,19 +3,13 @@ function addLakeOverlays() {
 
     var lakeData = "data/lakes_with_markers.json";
     $.getJSON( lakeData, {}).done(function(data) {
-        var seen = new Array();
         $.each( data, function(i, item) {
-            $('#see').append($('<option>', {
-                value: i,
-                text: i
-            }));
-
             $.each(item.markers, function(n, markerData) {
                 var marker = L.marker([markerData.coordinates[1],markerData.coordinates[0]]);
                 marker.title = n;
                 marker.addTo(map);
                 $('#badestelle').append($('<option>', {
-                    value: n,
+                    value: markerData.coordinates[1] + ";" + markerData.coordinates[0],
                     text: n
                 }));
             });
@@ -49,6 +43,10 @@ function addLakeOverlays() {
                     });
                 }});
             polygon.addTo(map);
+            $('#see').append($('<option>', {
+                value: polygon.getBounds().getNorthWest() + ";" + polygon.getBounds().getSouthEast(),
+                text: i
+            }));
         });
     });
 

@@ -15,6 +15,7 @@ function setMapDimensions() {
 
 function setDialogPosition() {
     $('#dialog').css('left', ($(window).width() - $('#dialog').outerWidth(true)) / 2);
+    $('.openArrow').css('left', ($(window).width() - $('.openArrow').outerWidth(true)) / 2);
 }
 
 function init() {
