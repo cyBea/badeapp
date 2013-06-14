@@ -2,6 +2,15 @@ body {
 	width: 100%;
 	margin: 0px;
 	font-family: Verdana, Geneva, sans-serif;
+    background: #F5F5F5;
+}
+
+#main {
+    width: 80%;
+    margin: auto;
+    -moz-box-shadow: 0 0 5px #888;
+    -webkit-box-shadow: 0 0 5px#888;
+    box-shadow: 0 0 5px #888;
 }
 
 #header {	
@@ -18,16 +27,11 @@ body {
     background: linear-gradient(135deg,  rgba(202,247,113,1) 1%,rgba(185,247,63,1) 15%,rgba(159,238,0,1) 50%,rgba(185,247,63,1) 85%,rgba(202,247,113,1) 99%); /* W3C */
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#caf771', endColorstr='#caf771',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
     
-    border-top-right-radius: 15px;
-    border-top-left-radius: 15px;
-    -moz-box-shadow: 0 0 5px #888;
-    -webkit-box-shadow: 0 0 5px#888;
-    box-shadow: 0 0 5px #888;
-
     color: rgba(255,255,255,0.9);
     text-shadow: 1px 1px 7px #666;
     font-weight: bold;
     font-size: 150%;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 #opener {

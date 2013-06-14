@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8" />
         <title>Badeapp - Harter Shizzle</title>
-
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
         <link rel="stylesheet" href="./assets/css/leaflet/leaflet.css" />
         <link rel="stylesheet" href="./assets/css/jquery-ui/ui-lightness/jquery-ui-1.10.2.custom.min.css" />
         <link rel="stylesheet" href="./assets/css/template.css" />
@@ -19,27 +19,29 @@
         <script src="./assets/js/scripts/map.js"></script>
         <script src="./assets/js/scripts/main.js"></script>
         <script src="./assets/js/scripts/navi.js"></script>
-
     </head>
     
     <body>
-        <div id="header"><div id="name">Badeapp</div>
-            <div id="opener">Choose your Lake</div>
-        </div>
-        <div>
-            <div class="openArrow"><img src="assets/img/arrow.png"></div>
-            <div id="dialog">
-                <p>Wähle einen See</p>
-                <select id="see" name="see" size="1"> 
-                    <option value="-1">Bitte wählen</option>
-                </select>
-                <p>oder eine Badestelle</p>
-                <select id="badestelle" name="badestelle" size="1"> 
-                    <option value="-1">Bitte wählen</option>
-                </select> 
-                <p>um diese zu zentrieren...</p>
+        <a href="https://github.com/you"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a>
+        <div id="main">
+            <div id="header"><div id="name">Badeapp</div>
+                <div id="opener">Choose your Lake</div>
             </div>
-            <div id="map"></div>
+            <div>
+                <div class="openArrow"><img src="assets/img/arrow.png"></div>
+                <div id="dialog">
+                    <p>Wähle einen See</p>
+                    <select id="see" name="see" size="1"> 
+                        <option value="-1">Bitte wählen</option>
+                    </select>
+                    <p>oder eine Badestelle</p>
+                    <select id="badestelle" name="badestelle" size="1"> 
+                        <option value="-1">Bitte wählen</option>
+                    </select> 
+                    <p>um diese zu zentrieren...</p>
+                </div>
+                <div id="map"></div>
+            </div>
         </div>
     </body>
     

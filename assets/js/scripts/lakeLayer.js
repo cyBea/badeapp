@@ -4,9 +4,11 @@ function addLakeOverlays() {
     var lakeData = "data/lakes_with_markers.json";
     $.getJSON( lakeData, {}).done(function(data) {
         $.each( data, function(i, item) {
+            // Creates a Marker for each bathing place of a lake
             $.each(item.markers, function(n, markerData) {
                 var marker = L.marker([markerData.coordinates[1],markerData.coordinates[0]]);
                 marker.title = n;
+                marker.bindPopup(n);
                 marker.addTo(map);
                 $('#badestelle').append($('<option>', {
                     value: markerData.coordinates[1] + ";" + markerData.coordinates[0],
@@ -14,6 +16,7 @@ function addLakeOverlays() {
                 }));
             });
 
+            // Creates geoJson Feature of a lake to add a Polygon to the Maplayer
             var geojsonFeature = {
                 type: "Feature",
                 properties: {
@@ -22,15 +25,17 @@ function addLakeOverlays() {
                     color : item.color,
                     badestellen : item.markers
                 },
+                markers : leafletMarker,
                 geometry : item.geojson
             };
 
             lakeLayer.addData(geojsonFeature);
 
+            // creates the polygon with the feature information
             polygon = L.geoJson(geojsonFeature, {
                 style: function (feature) {
                     return {
-                        weight: 3,
+                        weight: 2,
                         opacity: 1,
                         color: feature.properties.color,
                     };
@@ -50,6 +55,7 @@ function addLakeOverlays() {
         });
     });
 
+    // creates the infopanel for lake information and bathplace information
     var info = L.control();
 
     info.onAdd = function (map) {
@@ -65,7 +71,7 @@ function addLakeOverlays() {
         if (typeof props != "undefined") {
             var badestellen = '<h3>' + props.name + '</h3>';
             $.each(props.badestellen, function(name, markerData) {
-                badestellen += '<h4>' + name + '</h4><p>Eco: ' + markerData.eco + '<br>Ente: ' + markerData.enter + '<br>Sicht: ' + markerData.sicht + '</p>'
+                badestellen += '<h4>' + name + '</h4><p>Eco: ' + markerData.eco + '<br>Ente: ' + markerData.ente + '<br>Sicht: ' + markerData.sicht + '</p>'
             });
             this._div.innerHTML = badestellen;
         } else {
@@ -75,13 +81,14 @@ function addLakeOverlays() {
 
     info.addTo(map);
 
+    // creates a panel for the polygoncolordescription
     var legend = L.control({position: 'bottomright'});
 
     legend.onAdd = function (map) {
 
         var div = L.DomUtil.create('div', 'info legend'),
-            grades = ["lawngreen"];
-            labels = ["Gute Wasserqualität"];
+            grades = ["lawngreen", "orange", "red"];
+            labels = ["Gute Wasserqualität", "vom Baden wird abgeraten", "Badeverbot"];
 
         for (var i = 0; i < grades.length; i++) {
             div.innerHTML +=
@@ -94,13 +101,13 @@ function addLakeOverlays() {
 
     legend.addTo(map);
 
+    // is called on mouseover of a polygon
     function highlightFeature(e) {
         var layer = e.target;
 
         layer.setStyle({
-            weight: 3,
+            weight: 2,
             opacity: 1.0,
-            color: '#FFD174',
         });
 
         if (!L.Browser.ie && !L.Browser.opera) {
@@ -109,10 +116,13 @@ function addLakeOverlays() {
         info.update(layer.feature.properties);
     }
 
+    // Is called on mouseout of a polygon
     function resetHighlight(e) {
-        polygon.resetStyle(e.target);
-        info.update();
+        // polygon.resetStyle(e.target);
+        //info.update();
     }
+
+    // is called on click of a polygon
     function zoomToFeature(e) {
         map.fitBounds(e.target.getBounds());
     }
