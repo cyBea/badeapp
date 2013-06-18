@@ -25,7 +25,6 @@ function addLakeOverlays() {
                     color : item.color,
                     badestellen : item.markers
                 },
-                markers : leafletMarker,
                 geometry : item.geojson
             };
 
