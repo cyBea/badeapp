@@ -58,6 +58,8 @@ body {
     box-shadow: 0 0 15px rgba(0,0,0,0.2);
 }
 
+
+
 .openArrow {
     width: 300px;
     padding: 0px 50px;
@@ -77,4 +79,32 @@ body {
     -moz-box-shadow: 0 0 5px #888;
     -webkit-box-shadow: 0 0 5px#888;
     box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+
+#question {
+    vertical-align:top; 
+    font-size:0.7em; 
+    line-height:100%;
+    color: rgb(30,30,180);
+}
+
+#explanation {
+    width: 300px;
+    display: none;
+    position: absolute;
+    z-index: 9999;
+    background: white;
+    background: rgba(255,255,255,0.9);
+    text-align: center;
+    padding: 10px 50px;
+    border-bottom-right-radius: 15px;
+    border-bottom-left-radius: 15px;
+    -moz-box-shadow: 0 0 5px #888;
+    -webkit-box-shadow: 0 0 5px#888;
+    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+}
+
+#explanationText{
+    padding: 6px 8px;
+    font: 14px/16px Arial, Helvetica, sans-serif;
 }
