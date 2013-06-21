@@ -102,14 +102,7 @@ function addLakeOverlays() {
 
 
    
-    var explanation = L.control({position: 'bottomleft'});
-    explanation.onAdd = function (map) {
-        var div = L.DomUtil.create('div', 'info explanation'); 
-       // this.update('E.coli');
-        div.innerHTML = '<h4> Was sind eigentlich </h4> ';
-        return div;
-       };
-    explanation.addTo(map);
+    
 
 
     // is called on mouseover of a polygon
