@@ -70,7 +70,7 @@ function addLakeOverlays() {
         if (typeof props != "undefined") {
             var badestellen = '<h3>' + props.name + '</h3>';
             $.each(props.badestellen, function(name, markerData) {
-                badestellen += '<h4>' + name + '</h4><p>Eco: ' + markerData.eco + '<br>Ente: ' + markerData.ente + '<br>Sicht: ' + markerData.sicht + '</p>'
+                badestellen += '<h4>' + name + '</h4><p>E.coli pro 100 ml<a id="question" onclick="questionmark(\'E.coli\')" href="#">[?]</a>: ' + markerData.eco + '<br>Int. Enterokokken pro 100 ml <a id="question" onclick="questionmark(\'Int. Enterokokken\')" href="#">[?]</a>: ' + markerData.ente + '<br>Sichttiefe in cm: ' + markerData.sicht + '</p>' 
             });
             this._div.innerHTML = badestellen;
         } else {
@@ -100,6 +100,18 @@ function addLakeOverlays() {
 
     legend.addTo(map);
 
+
+   
+    var explanation = L.control({position: 'bottomleft'});
+    explanation.onAdd = function (map) {
+        var div = L.DomUtil.create('div', 'info explanation'); 
+       // this.update('E.coli');
+        div.innerHTML = '<h4> Was sind eigentlich </h4> ';
+        return div;
+       };
+    explanation.addTo(map);
+
+
     // is called on mouseover of a polygon
     function highlightFeature(e) {
         var layer = e.target;
@@ -125,6 +137,8 @@ function addLakeOverlays() {
     function zoomToFeature(e) {
         map.fitBounds(e.target.getBounds());
     }
+
+ 
 }
 
 
