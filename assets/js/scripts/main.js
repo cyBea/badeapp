@@ -11,6 +11,7 @@ $(window).resize(function() {
 
 function setDialogPosition() {
     $('#dialog').css('left', ($(window).width() - $('#dialog').outerWidth(true)) / 2);
+    $('#explanation').css('left', ($(window).width() - $('#explanation').outerWidth(true)) / 2);
     $('.openArrow').css('left', ($(window).width() - $('.openArrow').outerWidth(true)) / 2);
 }
 
