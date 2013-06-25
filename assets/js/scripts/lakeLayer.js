@@ -1,7 +1,7 @@
 function addLakeOverlays() {
     var lakeLayer = L.geoJson().addTo(this.map);
 
-    var lakeData = "data/lakes_with_markers.json";
+    var lakeData = "data/lakes_with_markers2.json";
     $.getJSON( lakeData, {}).done(function(data) {
         $.each( data, function(i, item) {
             // Creates a Marker for each bathing place of a lake
