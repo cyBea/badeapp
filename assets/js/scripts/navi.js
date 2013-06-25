@@ -3,12 +3,22 @@ $(function() {
             $('#dialog').slideToggle({ 
                 duration : 'medium', 
                 easing : 'linear'
-            });    
-        $('#explanation').hide({ 
+            });
+            if ($('#explanation').is(':visible')){
+                $('#explanation').slideToggle({
+                    duration : 'medium', 
+                    easing : 'linear'
+                });
+            }
+
+        return false;
+    });
+
+    $('#explanation').click(function(e) {
+        $('#explanation').slideToggle({ 
             duration : 'medium', 
             easing : 'linear'
-        });
-        return false;
+          });
     });
 
     $('.openArrow').click(function(e) {
@@ -24,35 +34,20 @@ $(function() {
             duration : 'medium', 
             easing : 'linear'
         });  
-        $('#explanation').hide({ 
-            duration : 'medium', 
-            easing : 'linear'
-        });  
+
         zoomToLake($('#see').val());
     });
-    $('#explanation').click(function(e){
-      $('#explanation').hide({ 
-            duration : 'medium', 
-            easing : 'linear'
-        });
-      return false;
-    });
+
     $('#badestelle').change(function(e) {
         $('#dialog').slideToggle({ 
             duration : 'medium', 
             easing : 'linear'
         });
-        $('#explanation').hide({ 
-            duration : 'medium', 
-            easing : 'linear'
-        });
         zoomToBathplace($('#badestelle').val());
-    });
-  
+    });  
 }); 
 
 function questionmark(text){
-   // alert(text);
    var infotext = '<h4> Was sind eigentlich ' + text + ' ?? </h4>';
    if (text  == 'E.coli'){
         infotext += '<p id = "explanationText">Escherichia coli ist ein natürlich vorkommender Keim (Kommensale) im Darm von Vögeln und warmblütigen Säugetieren. Ebenso ist er Bestandteil der Darmflora des Menschen. Auf Grund dessen gilt es auch als Fäkalindikator. </br> Bestimmte Stämme von Escherichia coli können bei Tieren und Menschen schwerwiegende Erkrankungen hervorrufen. ';
@@ -66,21 +61,18 @@ function questionmark(text){
     infotext += '<p id = "explanationText"> ' + text + '... haha how could this happen? </p>'
    }
   if ($('#dialog').is(':visible')){
-    $('#dialog').hide({
+    $('#dialog').slideToggle({
        duration : 'medium', 
        easing : 'linear'
     });
   }
   $("#explanation").html(infotext);
-  if ($('#explanation').is(':hidden')){
-    $('#explanation').slideToggle({ 
-                  duration : 'medium', 
-                  easing : 'linear'
-              });    
-  }
+  $('#explanation').slideToggle({ 
+    duration : 'medium', 
+    easing : 'linear'
+  });    
   
-  
-return false;
-    }
+  return false;
+}
 
         
