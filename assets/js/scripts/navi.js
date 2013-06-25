@@ -3,7 +3,13 @@ $(function() {
             $('#dialog').slideToggle({ 
                 duration : 'medium', 
                 easing : 'linear'
-            });    
+            });
+            if ($('#explanation').is(':visible')){
+                $('#explanation').slideToggle({
+                    duration : 'medium', 
+                    easing : 'linear'
+                });
+            }
 
         return false;
     });
@@ -55,7 +61,7 @@ function questionmark(text){
     infotext += '<p id = "explanationText"> ' + text + '... haha how could this happen? </p>'
    }
   if ($('#dialog').is(':visible')){
-    $('#dialog').hide({
+    $('#dialog').slideToggle({
        duration : 'medium', 
        easing : 'linear'
     });
