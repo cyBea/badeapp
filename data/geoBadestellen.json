@@ -1,8 +1,8 @@
-
 {
  "Alter Hof": {"long":"52.432925", "lat":"13.142456"},
  "Bürgerablage":{ "long":"52.584801", "lat":"13.2113685"},
  "Bammelecke":{ "long":"52.407450", "lat":"13.622152"},
+ "Breitehorn": {"long": "52.465606", "lat":"13.17996695"},
  "Dämeritzsee":{ "long":"52.4260464", "lat":"13.7307697"},
  "Flughafensee":{ "long":"52.569952", "lat":"13.285072"},
  "Seebad Friedrichshagen":{ "long":"52.445646", "lat":"13.63062"},
@@ -17,7 +17,8 @@
  "Freibad Jungfernheide":{ "long":"52.5438309", "lat":"13.274665"},
  "Kleine Badewiese":{ "long":"52.483851", "lat":"13.186200"},
  "Kleiner Müggelsee":{ "long":"52.428424", "lat":"13.677414"},
- "Krumme Lanke":{ "long":"52.447485", "lat":"13.231211"}, "Lieper Bucht":{ "long":"52.469358", "lat":"13.196634"},
+ "Krumme Lanke":{ "long":"52.447485", "lat":"13.231211"}, 
+ "Lieper Bucht":{ "long":"52.469358", "lat":"13.196634"},
  "Freibad Lübars (Ziegeleisee)":{ "long":"52.6178117", "lat":"13.3357798"},
  "Strandbad Müggelsee":{ "long":"52.445011", "lat":"13.675572"},
  "Strandbad Orankesee":{ "long":"52.5492965", "lat":"13.484292"},
@@ -33,7 +34,7 @@
  "Reiherwerder":{ "long":"52.585542", "lat":"13.255207"},
  "Saatwinkel":{ "long":"52.562252", "lat":"13.246973"},
  "Teufelssee":{ "long":"52.490721", "lat":"13.234437"},
- "Wannsee, Strandbad":{ "long":"52.439021", "lat":"13.176659"},
+ "Strandbad Wannsee":{ "long":"52.439021", "lat":"13.176659"},
  "Seebadeanstalt Weißensee":{ "long":"52.553892", "lat":"13.465316"},
  "Freibad Wendenschloss":{ "long":"52.41515", "lat":"13.5999899"}
 }
