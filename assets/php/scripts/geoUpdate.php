@@ -22,8 +22,7 @@ foreach ($jsonObject as $gewaesser => $badestelle) {
 
 $jsonObject2 = json_encode($jsonObject, JSON_UNESCAPED_UNICODE);
 
-$outfile = "../../../data/lakes_with_markers2.json";
-file_put_contents($outfile, $jsonObject2);
+file_put_contents($file, $jsonObject2);
 
 
 ?>
