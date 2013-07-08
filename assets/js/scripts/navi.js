@@ -67,10 +67,12 @@ function questionmark(text){
     });
   }
   $("#explanation").html(infotext);
-  $('#explanation').slideToggle({ 
-    duration : 'medium', 
-    easing : 'linear'
-  });    
+  if ($('#explanation').is(':hidden')){
+    $('#explanation').slideToggle({ 
+      duration : 'medium', 
+      easing : 'linear'
+    }); 
+  }
   
   return false;
 }
