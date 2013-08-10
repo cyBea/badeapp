@@ -59,6 +59,7 @@ function addLakeOverlays() {
 
     info.onAdd = function (map) {
         this._div = L.DomUtil.create('div', 'info'); 
+
         this.update();
         return this._div;
     };
@@ -76,6 +77,11 @@ function addLakeOverlays() {
         } else {
             this._div.innerHTML += 'Bewege die Maus über einen See';   
         }
+        var map = document.getElementById('map');
+        
+        /*passt die maximale Höhe der größe der Karte an*/
+        this._div.style.maxHeight = (map.offsetHeight-130)+'px';
+
     };
 
     info.addTo(map);

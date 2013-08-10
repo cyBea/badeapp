@@ -7,6 +7,10 @@ $(document).ready(function() {
 $(window).resize(function() {
 	setMapDimensions();
     setDialogPosition();
+    /*passt die infobox der Fenstergröße an*/
+    var map = document.getElementById('map');
+    var infobox = document.getElementsByClassName("info")[0];
+    infobox.style.maxHeight = (map.offsetHeight-130)+'px';
 });
 
 function setDialogPosition() {
