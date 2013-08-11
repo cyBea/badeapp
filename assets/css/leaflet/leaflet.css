@@ -380,47 +380,111 @@
 /* popup */
 
 .leaflet-popup {
-	position: absolute;
+
+	position: relative;
+	top:-90px;
 	text-align: center;
+
 	}
 .leaflet-popup-content-wrapper {
-	padding: 1px;
+	background: white;
+	padding: 3px;
 	text-align: left;
 	-webkit-border-radius: 20px;
 	        border-radius: 20px;
 	}
+
+
 .leaflet-popup-content {
-	margin: 14px 20px;
+	/*margin: 14px 20px;*/
+	margin: 4px 19px;
 	line-height: 1.4;
 	}
 .leaflet-popup-content p {
-	margin: 18px 0;
+	/*margin: 18px 0;*/
+	margin: 2px 0;
+
+
 	}
 .leaflet-popup-tip-container {
-	margin: 0 auto;
+/*	margin: 0 auto;
 	width: 40px;
 	height: 20px;
 	position: relative;
 	overflow: hidden;
+*/
 	}
 .leaflet-popup-tip {
-	width: 15px;
+/*	width: 15px;
 	height: 15px;
 	padding: 1px;
-
-	margin: -8px auto 0;
-
+	margin: -8px auto ;
 	-webkit-transform: rotate(45deg);
 	   -moz-transform: rotate(45deg);
 	    -ms-transform: rotate(45deg);
 	     -o-transform: rotate(45deg);
-	        transform: rotate(45deg);
+	        transform: rotate(45deg);*/
 	}
+
+/*
+
 .leaflet-popup-content-wrapper, .leaflet-popup-tip {
 	background: white;
 
-	box-shadow: 0 3px 14px rgba(0,0,0,0.4);
-	}
+
+}*/
+
+.leaflet-popup-content-wrapper-yellow {
+	background: white;
+	padding: 1px;
+	text-align: left;
+	-webkit-border-radius: 20px;
+	        border-radius: 20px;
+	/*HIER: Umrandung + Farbe vom Popup*/
+	border: 2px solid orange;
+
+	/*HIER: Farbe vom Schatten des Popups*/
+	box-shadow: 10px 5px 20px orange;
+}
+.leaflet-popup-content-wrapper-lawngreen {
+	background: white;
+	padding: 1px;
+	text-align: left;
+	-webkit-border-radius: 20px;
+	        border-radius: 20px;
+	/*HIER: Umrandung + Farbe vom Popup*/
+	border: 2px solid lawngreen;
+
+	/*HIER: Farbe vom Schatten des Popups*/
+	box-shadow: 10px 5px 20px lawngreen;
+}
+
+.leaflet-popup-content-wrapper-lawngreen_a {
+	background: white;
+	padding: 1px;
+	text-align: left;
+	-webkit-border-radius: 20px;
+	        border-radius: 20px;
+	/*HIER: Umrandung + Farbe vom Popup*/
+	border: 2px solid green;
+
+	/*HIER: Farbe vom Schatten des Popups*/
+	box-shadow: 10px 5px 20px green;
+}
+
+.leaflet-popup-content-wrapper-red {
+	background: white;
+	padding: 1px;
+	text-align: left;
+	-webkit-border-radius: 20px;
+	        border-radius: 20px;
+	/*HIER: Umrandung + Farbe vom Popup*/
+	border: 2px solid red;
+
+	/*HIER: Farbe vom Schatten des Popups*/
+	box-shadow: 10px 5px 20px red;
+}
+
 .leaflet-container a.leaflet-popup-close-button {
 	position: absolute;
 	top: 0;

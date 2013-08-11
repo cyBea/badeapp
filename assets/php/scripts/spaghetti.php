@@ -100,10 +100,12 @@ foreach ($jsonObject2->index as $entry) {
 				$jsonObject1[$name]["ente"] = $entry->ente;
 
 				$color = str_replace(".jpg", "", $entry->farbe);
-				$end = strpos($color, "_");
-				if($end !== false) {
+				//$end = strpos($color, "_");
+				/*if($end !== false) {
+					echo $color;
 					$color = substr($color, $end);
-				}
+					echo "aktualisiert:" . $color;
+				}*/
 				switch($color) {
 					case "gruen":
 						$color = "lawngreen";
@@ -114,7 +116,11 @@ foreach ($jsonObject2->index as $entry) {
 					case "rot":
 						$color = "red";
 						break;
+					case "gruen_a":
+						$color = "lawngreen_a";
+						break;
 					default:
+					echo $color;
 						$color = "grey";
 				}
 				$jsonObject1[$name]["color"] = $color;
@@ -149,6 +155,10 @@ foreach ($jsonObject3 as $lakeName => $lake) {
 		foreach ($lake["markers"] as $markerName => $marker) {
 			switch($marker["color"]) {
 						case "lawngreen":
+							$i += 3.0;
+							$j += 1;
+							break;
+						case "lawngreen_a":
 							$i += 3.0;
 							$j += 1;
 							break;

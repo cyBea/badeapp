@@ -1,3 +1,17 @@
+function getMethods(obj) {
+  var result = [];
+  for (var id in obj) {
+    try {
+      if (typeof(obj[id]) == "function") {
+        result.push(id + ": " + obj[id].toString());
+      }
+    } catch (err) {
+      result.push(id + ": inaccessible");
+    }
+  }
+  return result;
+}
+
 function addLakeOverlays() {
     var lakeLayer = L.geoJson().addTo(this.map);
 
@@ -8,7 +22,18 @@ function addLakeOverlays() {
             $.each(item.markers, function(n, markerData) {
                 var marker = L.marker([markerData.coordinates[1],markerData.coordinates[0]]);
                 marker.title = n;
-                marker.bindPopup(n);
+                marker.on('click', function(){
+                    if (markerData.color == 'lawngreen_a') {
+                        marker.bindPopup(n + ": Algen!" ,{className: 'leaflet-popup-content-wrapper-'+markerData.color});
+                    }
+                    else{
+                        marker.bindPopup(n ,{className: 'leaflet-popup-content-wrapper-'+markerData.color});
+                    }
+                    zoomToBathplaceByName(n);
+                    marker.openPopup();
+ 
+                })
+              
                 marker.addTo(map);
                 $('#badestelle').append($('<option>', {
                     value: markerData.coordinates[1] + ";" + markerData.coordinates[0],
@@ -135,6 +160,21 @@ function addLakeOverlays() {
     // is called on click of a polygon
     function zoomToFeature(e) {
         map.fitBounds(e.target.getBounds());
+    }
+
+    function zoomToBathplaceByName(name){
+        var el = document.getElementById('badestelle');
+        for(var i=0; i<el.options.length; i++) {
+          if ( el.options[i].text == name ) {
+            el.selectedIndex = i;
+            zoomToBathplace($('#badestelle').val());
+            break;
+          }
+        }
+    }
+
+    function showInfoPanel(name){
+        this.map.lakeLayer;
     }
 
  
