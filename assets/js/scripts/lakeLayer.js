@@ -1,17 +1,3 @@
-function getMethods(obj) {
-  var result = [];
-  for (var id in obj) {
-    try {
-      if (typeof(obj[id]) == "function") {
-        result.push(id + ": " + obj[id].toString());
-      }
-    } catch (err) {
-      result.push(id + ": inaccessible");
-    }
-  }
-  return result;
-}
-
 function addLakeOverlays() {
     var lakeLayer = L.geoJson().addTo(this.map);
 
@@ -31,7 +17,7 @@ function addLakeOverlays() {
                     }
                     zoomToBathplaceByName(n);
                     marker.openPopup();
- 
+                    showInfoPanel(n);
                 })
               
                 marker.addTo(map);
@@ -45,6 +31,7 @@ function addLakeOverlays() {
             var geojsonFeature = {
                 type: "Feature",
                 properties: {
+                    //id : n
                     name : i,
                     popupContent: i,
                     color : item.color,
@@ -90,21 +77,29 @@ function addLakeOverlays() {
     };
 
     info.update = function (props) {
-        var divContent = this._div.innerHTML;
-        this._div.innerHTML = '<h4>Badestelle</h4>';
+
 
         if (typeof props != "undefined") {
-            var badestellen = '<h3>' + props.name + '</h3>';
-            $.each(props.badestellen, function(name, markerData) {
-                badestellen += '<h4>' + name + '</h4><p>E.coli pro 100 ml<a class="question" onclick="questionmark(\'E.coli\')" href="#">[?]</a>: ' + markerData.eco + '<br>Int. Enterokokken pro 100 ml <a class="question" onclick="questionmark(\'Int. Enterokokken\')" href="#">[?]</a>: ' + markerData.ente + '<br>Sichttiefe in cm: ' + markerData.sicht + '</p>' 
-            });
-            this._div.innerHTML = badestellen;
+
+            if (!this._div.innerHTML.match(props.name)){
+                this._div.innerHTML = '<h4>Badestelle</h4>';
+
+                var badestellen = '<div id = profil-'+props.name + '> <h3>' + props.name + '</h3>';
+                $.each(props.badestellen, function(name, markerData) {
+                    badestellen += '<div id = "badestelle-'+name +'" style="margin: 3px 3px;"><div id = badestelle-'+markerData.color+'>'+' <h4>' + name + '</h4></div><p>E.coli pro 100 ml<a class="question" onclick="questionmark(\'E.coli\')" href="#">[?]</a>: ' + markerData.eco + '<br>Int. Enterokokken pro 100 ml <a class="question" onclick="questionmark(\'Int. Enterokokken\')" href="#">[?]</a>: ' + markerData.ente + '<br>Sichttiefe in cm: ' + markerData.sicht + '</p></div> ' ;
+                    
+                });
+               this._div.innerHTML = badestellen;
+            }
+               
+   
+
         } else {
             this._div.innerHTML += 'Bewege die Maus über einen See';   
         }
-        var map = document.getElementById('map');
         
         /*passt die maximale Höhe der größe der Karte an*/
+        var map = document.getElementById('map');
         this._div.style.maxHeight = (map.offsetHeight-130)+'px';
 
     };
@@ -131,9 +126,6 @@ function addLakeOverlays() {
 
     legend.addTo(map);
 
-
-   
-    
 
 
     // is called on mouseover of a polygon
@@ -173,8 +165,21 @@ function addLakeOverlays() {
         }
     }
 
+
+
     function showInfoPanel(name){
-        this.map.lakeLayer;
+     
+       $('.info').find('*').each(function() {
+         $('div').filter(function() {
+                    return this.id.match(/badestelle/);
+                }).removeClass("highlightInfo");
+        });
+
+        document.getElementById("badestelle-"+name+"").className += 'highlightInfo';
+        var badestelle = document.getElementById("badestelle-"+name+"");
+        var infobox = document.getElementsByClassName("info")[0];
+        infobox.scrollTop = badestelle.offsetTop - 4; // -4 => OFFSET
+
     }
 
  
