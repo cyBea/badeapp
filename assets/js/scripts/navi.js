@@ -13,7 +13,13 @@ $(function() {
 
         return false;
     });
-
+ $('#dialog').click(function(e) {
+            $('#dialog').slideToggle({ 
+                duration : 'medium', 
+                easing : 'linear'
+            });
+          return false;
+        })
     $('#explanation').click(function(e) {
         $('#explanation').slideToggle({ 
             duration : 'medium', 
@@ -38,13 +44,25 @@ $(function() {
         zoomToLake($('#see').val());
     });
 
+    $('#see').click(function(e){
+      return false;
+    });
+
     $('#badestelle').change(function(e) {
         $('#dialog').slideToggle({ 
             duration : 'medium', 
             easing : 'linear'
         });
         zoomToBathplace($('#badestelle').val());
+        var el = document.getElementById('badestelle');
+        console.log(el.options[el.selectedIndex].text);
+        showInfoPanel(el.options[el.selectedIndex].text+"");
     });  
+
+      $('#badestelle').click(function(e){
+      return false;
+    });
+
 }); 
 
 function questionmark(text){

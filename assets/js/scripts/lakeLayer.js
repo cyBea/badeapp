@@ -95,7 +95,7 @@ function addLakeOverlays() {
    
 
         } else {
-            this._div.innerHTML += 'Bewege die Maus über einen See';   
+            this._div.innerHTML += '<h4>Bewege die Maus über einen See</h4>';   
         }
         
         /*passt die maximale Höhe der größe der Karte an*/
@@ -164,10 +164,11 @@ function addLakeOverlays() {
           }
         }
     }
+ 
+}
 
 
-
-    function showInfoPanel(name){
+function showInfoPanel(name){
      
        $('.info').find('*').each(function() {
          $('div').filter(function() {
@@ -181,9 +182,3 @@ function addLakeOverlays() {
         infobox.scrollTop = badestelle.offsetTop - 4; // -4 => OFFSET
 
     }
-
- 
-}
-
-
-
