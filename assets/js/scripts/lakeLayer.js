@@ -130,7 +130,6 @@ function addLakeOverlays() {
     legend.addTo(map);
 
 
-
     // is called on mouseover of a polygon
     function highlightFeature(e) {
         var layer = e.target;
@@ -182,26 +181,17 @@ function addLakeOverlays() {
 
 
 function hoverItem(name){
-  /*    $('.info').find('*').each(function() {
-         $('div').filter(function() {
-                    return this.id.match(/badestelle/);
-                }).removeClass("hoverInfo");
-        });*/
-
         document.getElementById("badestelle-"+unescape(name)+"").className += ' hoverInfo';
-        var badestelle = document.getElementById("badestelle-"+name+"");
+        var badestelle = document.getElementById("badestelle-"+unescape(name)+"");
         var infobox = document.getElementsByClassName("info")[0];
         infobox.scrollTop = badestelle.offsetTop - 4; // -4 => OFFSET
 
 }
 
 function unhoverItem(name){
-     //   $('.info').find('*').each(function() {
              $('div').filter(function() {
                         return this.id.match("badestelle-"+unescape(name));
                     }).removeClass("hoverInfo");
-       //     });
-     //  $("badestelle-"+unescape(name)).removeClass('hoverInfo');
 }
 
 function showInfoPanel(name){
@@ -211,11 +201,12 @@ function showInfoPanel(name){
                     return this.id.match(/badestelle/);
                 }).removeClass("highlightInfo");
         });
-
-        document.getElementById("badestelle-"+name+"").className += ' highlightInfo';
-        var badestelle = document.getElementById("badestelle-"+name+"");
-        var infobox = document.getElementsByClassName("info")[0];
-        infobox.scrollTop = badestelle.offsetTop - 4; // -4 => OFFSET
+        if (document.getElementById("badestelle-"+name+"") != null){
+            document.getElementById("badestelle-"+name+"").className += ' highlightInfo';
+            var badestelle = document.getElementById("badestelle-"+name+"");
+            var infobox = document.getElementsByClassName("info")[0];
+            infobox.scrollTop = badestelle.offsetTop - 4; // -4 => OFFSET
+        }
 
     }
 
