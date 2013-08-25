@@ -81,12 +81,14 @@ function addLakeOverlays() {
 
         if (typeof props != "undefined") {
 
-            if (!this._div.innerHTML.match(props.name)){
+            if (!this._div.innerHTML.match(props.name)){    //Wenn nicht schon infobox mit richtiger Badestelle geladen wurde...
                 this._div.innerHTML = '<h4>Badestelle</h4>';
+           
 
-                var badestellen = '<div id = profil-'+props.name + '> <h3>' + props.name + '</h3>';
+                var badestellen = '<div id = "profil-'+props.name + '"> <h3>' + props.name + '</h3>';
                 $.each(props.badestellen, function(name, markerData) {
-                    badestellen += '<div id = "badestelle-'+name +'" style="margin: 3px 3px;"><div id = badestelle-'+markerData.color+'>'+' <h4>' + name + '</h4></div><p>E.coli pro 100 ml<a class="question" onclick="questionmark(\'E.coli\')" href="#">[?]</a>: ' + markerData.eco + '<br>Int. Enterokokken pro 100 ml <a class="question" onclick="questionmark(\'Int. Enterokokken\')" href="#">[?]</a>: ' + markerData.ente + '<br>Sichttiefe in cm: ' + markerData.sicht + '</p></div> ' ;
+
+                    badestellen += '<div id = "badestelle-'+name +'"  style="margin: 3px 3px;" onclick = markerPopup("'+escape(name)+'") onmouseover = hoverItem("'+escape(name)+'") onmouseout = unhoverItem("'+escape(name)+'")><div id = badestelle-'+markerData.color+'>'+' <h4>' + name + '</h4></div><p>E.coli pro 100 ml<a class="question" onclick="questionmark(\'E.coli\')" href="#">[?]</a>: ' + markerData.eco + '<br>Int. Enterokokken pro 100 ml <a class="question" onclick="questionmark(\'Int. Enterokokken\')" href="#">[?]</a>: ' + markerData.ente + '<br>Sichttiefe in cm: ' + markerData.sicht + '</p></div> ' ;
                     
                 });
                this._div.innerHTML = badestellen;
@@ -101,6 +103,7 @@ function addLakeOverlays() {
         /*passt die maximale Höhe der größe der Karte an*/
         var map = document.getElementById('map');
         this._div.style.maxHeight = (map.offsetHeight-130)+'px';
+
 
     };
 
@@ -117,7 +120,7 @@ function addLakeOverlays() {
 
         for (var i = 0; i < grades.length; i++) {
             div.innerHTML +=
-                '<i style="background:' + grades[i] + '"></i> ' +
+                '<i  style="background:' + grades[i] + '"></i> ' +
                 labels[i] + '<br>';
         }
 
@@ -154,7 +157,19 @@ function addLakeOverlays() {
         map.fitBounds(e.target.getBounds());
     }
 
-    function zoomToBathplaceByName(name){
+  
+
+
+ 
+}
+
+
+    function markerPopup(name){
+    zoomToBathplaceByName(unescape(name));
+    showInfoPanel(unescape(name));
+}
+
+  function zoomToBathplaceByName(name){
         var el = document.getElementById('badestelle');
         for(var i=0; i<el.options.length; i++) {
           if ( el.options[i].text == name ) {
@@ -164,9 +179,30 @@ function addLakeOverlays() {
           }
         }
     }
- 
+
+
+function hoverItem(name){
+  /*    $('.info').find('*').each(function() {
+         $('div').filter(function() {
+                    return this.id.match(/badestelle/);
+                }).removeClass("hoverInfo");
+        });*/
+
+        document.getElementById("badestelle-"+unescape(name)+"").className += ' hoverInfo';
+        var badestelle = document.getElementById("badestelle-"+name+"");
+        var infobox = document.getElementsByClassName("info")[0];
+        infobox.scrollTop = badestelle.offsetTop - 4; // -4 => OFFSET
+
 }
 
+function unhoverItem(name){
+     //   $('.info').find('*').each(function() {
+             $('div').filter(function() {
+                        return this.id.match("badestelle-"+unescape(name));
+                    }).removeClass("hoverInfo");
+       //     });
+     //  $("badestelle-"+unescape(name)).removeClass('hoverInfo');
+}
 
 function showInfoPanel(name){
      
@@ -176,9 +212,11 @@ function showInfoPanel(name){
                 }).removeClass("highlightInfo");
         });
 
-        document.getElementById("badestelle-"+name+"").className += 'highlightInfo';
+        document.getElementById("badestelle-"+name+"").className += ' highlightInfo';
         var badestelle = document.getElementById("badestelle-"+name+"");
         var infobox = document.getElementsByClassName("info")[0];
         infobox.scrollTop = badestelle.offsetTop - 4; // -4 => OFFSET
 
     }
+
+
