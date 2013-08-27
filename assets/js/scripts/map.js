@@ -26,7 +26,7 @@ function zoomToBathplace(coordString) {
     var coords = coordString.split(";");
     var LatLng = new L.LatLng(parseFloat(coords[0]), parseFloat(coords[1]));
     map.panTo(LatLng);
-    map.setZoom(14);
+    map.setZoom(15);
 }
 
 // erwarten Boundingbox(Punkt oben links und Punkt unten rechts) in Form eines Strings example: "LatLng(52.44817, 13.57023);LatLng(52.37509, 13.65709)"
