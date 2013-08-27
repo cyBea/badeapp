@@ -197,9 +197,6 @@ function openPopupByName(name){
 
 function hoverItem(name){
         document.getElementById("badestelle-"+unescape(name)+"").className += ' hoverInfo';
-        var badestelle = document.getElementById("badestelle-"+unescape(name)+"");
-        var infobox = document.getElementsByClassName("info")[0];
-        infobox.scrollTop = badestelle.offsetTop - 4; // -4 => OFFSET
 
 }
 
