@@ -88,10 +88,12 @@ function addLakeOverlays() {
                 var badestellen = '<div id = "profil-'+props.name + '"> <h3>' + props.name + '</h3>';
                 $.each(props.badestellen, function(name, markerData) {
 
-                    badestellen += '<div id = "badestelle-'+name +'"  style="margin: 3px 3px;" onclick = markerPopup("'+escape(name)+'") onmouseover = hoverItem("'+escape(name)+'") onmouseout = unhoverItem("'+escape(name)+'")><div id = badestelle-'+markerData.color+'>'+' <h4>' + name + '</h4></div><p>E.coli pro 100 ml<a class="question" onclick="questionmark(\'E.coli\')" href="#">[?]</a>: ' + markerData.eco + '<br>Int. Enterokokken pro 100 ml <a class="question" onclick="questionmark(\'Int. Enterokokken\')" href="#">[?]</a>: ' + markerData.ente + '<br>Sichttiefe in cm: ' + markerData.sicht + '</p></div> ' ;
+                    badestellen += '<div id = "badestelle-'+name +'" class="infoNotSelected" onclick = markerPopup("'+escape(name)+'") onmouseover = hoverItem("'+escape(name)+'") onmouseout = unhoverItem("'+escape(name)+'")><div id = badestelle-'+markerData.color+'>'+' <h4>' + name + '</h4></div><p>E.coli pro 100 ml<a class="question" onclick="questionmark(\'E.coli\')" href="#">[?]</a>: ' + markerData.eco + '<br>Int. Enterokokken pro 100 ml <a class="question" onclick="questionmark(\'Int. Enterokokken\')" href="#">[?]</a>: ' + markerData.ente + '<br>Sichttiefe in cm: ' + markerData.sicht + '</p></div> ' ; //style="margin: 3px 3px;"
                     
                 });
                this._div.innerHTML = badestellen;
+
+       
             }
                
    
@@ -166,6 +168,7 @@ function addLakeOverlays() {
     function markerPopup(name){
     zoomToBathplaceByName(unescape(name));
     showInfoPanel(unescape(name));
+    openPopupByName(unescape(name));
 }
 
   function zoomToBathplaceByName(name){
@@ -179,6 +182,18 @@ function addLakeOverlays() {
         }
     }
 
+function openPopupByName(name){
+    var el = document.getElementById('badestelle');
+        for(var i=0; i<el.options.length; i++) {
+          if ( el.options[i].text == name ) {
+            el.selectedIndex = i;
+            console.log(L.marker($('#badestelle').val()).openPopup());
+            //zoomToBathplace($('#badestelle').val());
+            break;
+          }
+        }
+}
+
 
 function hoverItem(name){
         document.getElementById("badestelle-"+unescape(name)+"").className += ' hoverInfo';
@@ -189,7 +204,7 @@ function hoverItem(name){
 }
 
 function unhoverItem(name){
-             $('div').filter(function() {
+           $('div').filter(function() {
                         return this.id.match("badestelle-"+unescape(name));
                     }).removeClass("hoverInfo");
 }
