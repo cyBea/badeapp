@@ -9,7 +9,7 @@ function addLakeOverlays() {
                 var marker = L.marker([markerData.coordinates[1],markerData.coordinates[0]]);
                 marker.title = n;
                 marker.on('click', function(){
-                    if (markerData.color == 'lawngreen_a') {
+                    if (markerData.color == 'lawngreen_a' || markerData.color == 'yellow_a' || markerData.color == 'red_a') {
                         marker.bindPopup(n + ": Algen!" ,{className: 'leaflet-popup-content-wrapper-'+markerData.color});
                     }
                     else{

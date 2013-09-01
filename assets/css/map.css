@@ -1,4 +1,4 @@
-ap { 
+map { 
 	width: 100%;
     height: 550px;
     display: block;
@@ -14,7 +14,7 @@ ap {
     opacity: 0.8;
 
 }
-#badestelle-yellow {
+#badestelle-yellow, #badestelle-yellow_a {
     padding: 6px 8px;
     background: orange;
     box-shadow: 0 0 15px rgba(0,0,0,0.2);
