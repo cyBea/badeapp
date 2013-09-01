@@ -85,7 +85,11 @@ function addLakeOverlays() {
                 this._div.innerHTML = '<h4>Badestelle</h4>';
                 var badestellen = '<div id = "profil-'+props.name + '"> <h3>' + props.name + '</h3>';
                 $.each(props.badestellen, function(name, markerData) {
-                    badestellen += '<div id = "badestelle-'+name +'" class="infoItem" style="margin: 3px 3px;" onclick = markerPopup("'+escape(name)+'") onmouseover = hoverItem("'+escape(name)+'") onmouseout = unhoverItem("'+escape(name)+'")><div id = badestelle-'+markerData.color+'>'+' <h4>' + name + '</h4></div><p>E.coli pro 100 ml<a class="question" onclick="questionmark(\'E.coli\')" href="#">[?]</a>: ' + markerData.eco + '<br>Int. Enterokokken pro 100 ml <a class="question" onclick="questionmark(\'Int. Enterokokken\')" href="#">[?]</a>: \ ' + markerData.ente + '</br>Sichttiefe in cm: ' + markerData.sicht + '</p></div> ' ; //
+                    var warning = "";
+                    if (markerData.color == "lawngreen_a" || markerData.color == "yellow_a" || markerData.color == "red_a"){
+                        warning = "<b><em>Algenwarnung</em></b></br>"
+                    }
+                    badestellen += '<div id = "badestelle-'+name +'" class="infoItem" style="margin: 3px 3px;" onclick = markerPopup("'+escape(name)+'") onmouseover = hoverItem("'+escape(name)+'") onmouseout = unhoverItem("'+escape(name)+'")><div id = badestelle-'+markerData.color+'>'+' <h4>' + name + '</h4></div><p>' + warning + 'E.coli pro 100 ml<a class="question" onclick="questionmark(\'E.coli\')" href="#">[?]</a>: ' + markerData.eco + '<br>Int. Enterokokken pro 100 ml <a class="question" onclick="questionmark(\'Int. Enterokokken\')" href="#">[?]</a>: \ ' + markerData.ente + '</br>Sichttiefe in cm: ' + markerData.sicht + '</p></div> ' ; //
                     
                 });
                this._div.innerHTML = badestellen;
