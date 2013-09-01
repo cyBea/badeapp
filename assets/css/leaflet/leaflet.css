@@ -434,7 +434,7 @@
 
 }*/
 
-.leaflet-popup-content-wrapper-yellow {
+.leaflet-popup-content-wrapper-yellow, .leaflet-popup-content-wrapper-yellow_a {
 	background: white;
 	padding: 1px;
 	text-align: left;
@@ -446,7 +446,7 @@
 	/*HIER: Farbe vom Schatten des Popups*/
 	box-shadow: 10px 5px 20px orange;
 }
-.leaflet-popup-content-wrapper-lawngreen {
+.leaflet-popup-content-wrapper-lawngreen, .leaflet-popup-content-wrapper-lawngreen_a {
 	background: white;
 	padding: 1px;
 	text-align: left;
@@ -459,20 +459,9 @@
 	box-shadow: 10px 5px 20px lawngreen;
 }
 
-.leaflet-popup-content-wrapper-lawngreen_a {
-	background: white;
-	padding: 1px;
-	text-align: left;
-	-webkit-border-radius: 20px;
-	        border-radius: 20px;
-	/*HIER: Umrandung + Farbe vom Popup*/
-	border: 2px solid green;
 
-	/*HIER: Farbe vom Schatten des Popups*/
-	box-shadow: 10px 5px 20px green;
-}
 
-.leaflet-popup-content-wrapper-red {
+.leaflet-popup-content-wrapper-red, .leaflet-popup-content-wrapper-red_a {
 	background: white;
 	padding: 1px;
 	text-align: left;

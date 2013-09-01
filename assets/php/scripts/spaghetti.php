@@ -119,6 +119,12 @@ foreach ($jsonObject2->index as $entry) {
 					case "gruen_a":
 						$color = "lawngreen_a";
 						break;
+					case "gelb_a":
+						$color = "yellow_a";
+						break;
+					case "rot_a":
+						$color = "red_a";
+						break;
 					default:
 					echo $color;
 						$color = "grey";
@@ -166,7 +172,15 @@ foreach ($jsonObject3 as $lakeName => $lake) {
 							$i += 2.0;
 							$j += 1;
 							break;
+						case "yellow_a":
+							$i += 2.0;
+							$j += 1;
+							break;
 						case "red":
+							$i += 1.0;
+							$j += 1;
+							break;
+						case "red_a":
 							$i += 1.0;
 							$j += 1;
 							break;
