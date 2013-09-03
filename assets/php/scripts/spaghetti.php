@@ -126,7 +126,6 @@ foreach ($jsonObject2->index as $entry) {
 						$color = "red_a";
 						break;
 					default:
-					echo $color;
 						$color = "grey";
 				}
 				$jsonObject1[$name]["color"] = $color;
