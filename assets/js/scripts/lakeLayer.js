@@ -1,3 +1,8 @@
+var markerMap = {};
+var polygonMap = {};
+var badestelleSee = {};
+var info;
+
 function addLakeOverlays() {
     var lakeLayer = L.geoJson().addTo(this.map);
 
@@ -21,6 +26,8 @@ function addLakeOverlays() {
                 })
               
                 marker.addTo(map);
+                markerMap[n] = marker;
+                badestelleSee[n] = i;
                 $('#badestelle').append($('<option>', {
                     value: markerData.coordinates[1] + ";" + markerData.coordinates[0],
                     text: n
@@ -57,6 +64,8 @@ function addLakeOverlays() {
                         mouseout: resetHighlight,
                         click: zoomToFeature
                     });
+                    polygonMap[i] = layer;
+
                 }});
             polygon.addTo(map);
             $('#see').append($('<option>', {
@@ -67,7 +76,7 @@ function addLakeOverlays() {
     });
 
     // creates the infopanel for lake information and bathplace information
-    var info = L.control();
+    info = L.control();
 
     info.onAdd = function (map) {
         this._div = L.DomUtil.create('div', 'info'); 
@@ -110,6 +119,9 @@ function addLakeOverlays() {
 
     };
 
+
+
+
     info.addTo(map);
 
     // creates a panel for the polygoncolordescription
@@ -133,21 +145,7 @@ function addLakeOverlays() {
     legend.addTo(map);
 
 
-    // is called on mouseover of a polygon
-    function highlightFeature(e) {
-        var layer = e.target;
-
-        layer.setStyle({
-            weight: 2,
-            opacity: 1.0,
-        });
-
-        if (!L.Browser.ie && !L.Browser.opera) {
-            layer.bringToFront();
-        }
-        info.update(layer.feature.properties);
-    }
-
+   
     // Is called on mouseout of a polygon
     function resetHighlight(e) {
         // polygon.resetStyle(e.target);
@@ -165,11 +163,33 @@ function addLakeOverlays() {
  
 }
 
+ // is called on mouseover of a polygon
+    function highlightFeature(e) {
+      if (e.target != null){
+        var layer = e.target;
+      }
+      // layer => polygonMap[]
+      else{ 
+        layer = e;
+      }
+
+        layer.setStyle({
+            weight: 2,
+            opacity: 1.0,
+        });
+
+        if (!L.Browser.ie && !L.Browser.opera) {
+            layer.bringToFront();
+        }
+        info.update(layer.feature.properties);
+    }
+
+
 
     function markerPopup(name){
-    zoomToBathplaceByName(unescape(name));
-    showInfoPanel(unescape(name));
-    openPopupByName(unescape(name));
+    if (markerMap[unescape(name)] != null){
+        markerMap[unescape(name)].fireEvent('click');
+    }
 }
 
   function zoomToBathplaceByName(name){
@@ -183,17 +203,6 @@ function addLakeOverlays() {
         }
     }
 
-function openPopupByName(name){
-    var el = document.getElementById('badestelle');
-        for(var i=0; i<el.options.length; i++) {
-          if ( el.options[i].text == name ) {
-            el.selectedIndex = i;
-            console.log(L.marker($('#badestelle').val()).openPopup());
-            //zoomToBathplace($('#badestelle').val());
-            break;
-          }
-        }
-}
 
 
 function hoverItem(name){

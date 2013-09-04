@@ -42,6 +42,14 @@ $(function() {
         });  
 
         zoomToLake($('#see').val());
+        var el = document.getElementById('see');
+      //  console.log(el.options[el.selectedIndex].text+"");
+      //  console.log(polygonMap[el.options[el.selectedIndex].text+""]);
+           
+           //--------------
+        var layer = polygonMap[el.options[el.selectedIndex].text];
+        highlightFeature(layer);
+      
     });
 
     $('#see').click(function(e){
@@ -55,8 +63,13 @@ $(function() {
         });
         zoomToBathplace($('#badestelle').val());
         var el = document.getElementById('badestelle');
-        console.log(el.options[el.selectedIndex].text);
-        showInfoPanel(el.options[el.selectedIndex].text+"");
+        //console.log(el.options[el.selectedIndex].text);
+        badestelleSee[el.options[el.selectedIndex].text];
+        var layer = polygonMap[badestelleSee[el.options[el.selectedIndex].text]];
+        highlightFeature(layer);
+        showInfoPanel(el.options[el.selectedIndex].text);
+        markerPopup(el.options[el.selectedIndex].text);
+
     });  
 
       $('#badestelle').click(function(e){
