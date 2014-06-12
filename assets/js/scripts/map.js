@@ -7,10 +7,19 @@ function initMap() {
     
     map.fitBounds(berlinBounds);
     map.zoomIn(1);
-    L.tileLayer('http://{s}.tile.cloudmade.com/d91a6c79683a45a78bb9492e491204bf/74468/256/{z}/{x}/{y}.png', {
-        attribution: 'Tiles Courtesy of <a href="http://www.mapquest.com/" target="_blank">MapQuest</a> Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>',
+     
+   
+    
+    L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
         maxZoom: 18
     }).addTo(map);
+    
+    
+//     L.tileLayer('http://otile2.mqcdn.com/tiles/1.0.0/sat', {
+//         attribution: 'Tiles Courtesy of <a href="http://www.mapquest.com/" target="_blank">MapQuest</a> Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>',
+//         maxZoom: 18
+//     }).addTo(map);
 
     L.control.scale({imperial : false}).addTo(map);
 
