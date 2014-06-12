@@ -52,14 +52,14 @@ body {
 }
 
 #dialog {
-    width: 300px;
+    width: 380px;
     display: none;
     position: absolute;
     z-index: 9999;
     background: white;
     background: rgba(255,255,255,0.8);
-    text-align: center;
-    padding: 10px 50px;
+ /*   text-align: center;*/
+    padding: 30px 10px 10px 10px;
     border-bottom-right-radius: 15px;
     border-bottom-left-radius: 15px;
     -moz-box-shadow: 0 0 5px #888;
@@ -69,8 +69,14 @@ body {
 
 
 
+
 .openArrow {
-    width: 300px;
+    color: rgba(255,255,255,0.9);
+    text-shadow: 1px 1px 7px #666;
+    font-weight: bold;
+    font-size: 110%;
+
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);    width: 300px;
     padding: 0px 50px;
     position: absolute;
     z-index: 9998;
