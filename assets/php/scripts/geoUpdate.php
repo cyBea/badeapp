@@ -1,4 +1,4 @@
-#!/usr/bin/php -q
+#!/usr/bin/php 
 <?php
 $file = "../../../data/lakes_with_markers.json";
 
@@ -9,15 +9,12 @@ $geoJSON = json_decode(file_get_contents($geofile), true);
 
 
 foreach ($jsonObject as $gewaesser => $badestelle) {
-
+  if (isset($badestelle["markers"])){
 	foreach ($badestelle["markers"] as $badestellenname => $badevalues){
 	$jsonObject[$gewaesser]["markers"][$badestellenname]["coordinates"][0] = floatval($geoJSON[$badestellenname]["lat"]);
-	$jsonObject[$gewaesser]["markers"][$badestellenname]["coordinates"][1] = floatval($geoJSON[$badestellenname]["long"]);
-	
-	
+	$jsonObject[$gewaesser]["markers"][$badestellenname]["coordinates"][1] = floatval($geoJSON[$badestellenname]["long"]);	
 	}
-	
-	
+  }
 }
 
 $jsonObject2 = json_encode($jsonObject, JSON_UNESCAPED_UNICODE);
