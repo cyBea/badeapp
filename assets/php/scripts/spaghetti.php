@@ -1,4 +1,4 @@
-#!/usr/bin/php 
+#!/usr/bin/php -q 
 <?php
 
 $address = "http://www.berlin.de/badegewaesser/baden-details/index.php/index/all.kml?q&badname=--%20Alles%20--&bezirk=--%20Alles%20--&profil=--%20Alles%20--&q_geo&q_radius=20000&ipp=20"; 
