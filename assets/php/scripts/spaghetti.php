@@ -149,8 +149,10 @@ $jsonObject3 = json_decode(file_get_contents($file), true);
 
 if (is_array($jsonObject1)){
   foreach ($jsonObject1 as $key => $value) {
-	  if(isset($jsonObject3[$value["profil"]])) {
-		  $jsonObject3[$value["profil"]]["markers"][$key] = $value;
+	    if(isset($value["profil"])) {
+		  if(isset($jsonObject3[$value["profil"]])) {
+			  $jsonObject3[$value["profil"]]["markers"][$key] = $value;
+			  }
 	  }
   }
 }
